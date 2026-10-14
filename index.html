@@ -1,5 +1,13 @@
 <!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1"><title>PULSAR Mytenis</title>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KM9J5WW095"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KM9J5WW095');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -369,7 +377,7 @@ details.hint p{font-size:14px;color:var(--fg-muted);line-height:1.55;margin:10px
       <p>A equipe da PULSAR pode validar essa indicação considerando sua biomecânica e seus objetivos de treino.</p>
       <a class="wa-link" href="https://wa.me/5531988324649" target="_blank" rel="noopener">Falar com a PULSAR no WhatsApp</a>
     </div>
-    <p class="disclaimer">Indicação automática baseada em especificações técnicas gerais dos fabricantes e nas respostas informadas. Não substitui avaliação de pisada presencial nem orientação profissional de treino. Preços são referências de mercado (podem variar por loja, cor e promoção) — base verificada em 12/10/2026.</p>
+    <p class="disclaimer">Indicação automática baseada em especificações técnicas gerais dos fabricantes e nas respostas informadas. Não substitui avaliação de pisada presencial nem orientação profissional de treino. Preços são referências de mercado (podem variar por loja, cor e promoção) — base verificada em 14/10/2026.</p>
     <button class="btn ghost" style="width:100%;margin-top:16px;" onclick="restartQuiz()">Refazer diagnóstico</button>
   </div>
 
@@ -427,71 +435,71 @@ details.hint p{font-size:14px;color:var(--fg-muted);line-height:1.55;margin:10px
 
 <script>
 /* ---------------- Base de tênis ---------------- */
-/* Base verificada em 12/10/2026 contra fontes reais de varejo (lojas oficiais
-   via Velocità, Centauro, Netshoes, Zoom, Promobit). Preços refletem o valor
-   promocional/Pix mais comum encontrado; nomes de modelo foram corrigidos
-   para a geração realmente vendida no Brasil quando divergiam. */
+/* Base verificada em 14/10/2026 contra fontes reais de varejo (lojas oficiais
+   via Velocità, Centauro, Netshoes, Zoom, Promobit, Dafiti). Preços refletem
+   o valor promocional/Pix mais comum encontrado; nomes de modelo foram
+   corrigidos para a geração realmente vendida no Brasil quando divergiam. */
 var SHOES = [
-{m:"Nike",md:"Revolution 7",p:329,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Entrada confortável para quem está começando a correr ou caminhar."},
-{m:"Nike",md:"Pegasus 41",p:749,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","pista"],obs:"O \"coringa\" da Nike: equilíbrio entre amortecimento e resposta para o treino diário."},
-{m:"Nike",md:"Structure 26",p:799,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:10,s:["asfalto"],obs:"Estrutura de estabilidade para quem pronam moderadamente, sem perder leveza."},
+{m:"Nike",md:"Revolution 7",p:299,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Entrada confortável para quem está começando a correr ou caminhar."},
+{m:"Nike",md:"Pegasus 42",p:999,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","pista"],obs:"O \"coringa\" da Nike: equilíbrio entre amortecimento e resposta para o treino diário."},
+{m:"Nike",md:"Structure 26",p:949,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:10,s:["asfalto"],obs:"Estrutura de estabilidade para quem pronam moderadamente, sem perder leveza."},
 {m:"Nike",md:"Invincible 3",p:949,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:9,s:["asfalto"],obs:"Amortecimento máximo da Nike, ideal para alto volume e pisada supinada."},
 {m:"Nike",md:"Vomero 18",p:999,n:["int"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Conforto acolchoado para treinos longos e dias de recuperação."},
-{m:"Nike",md:"Zoom Fly 6",p:1499,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Placa de carbono para treinos de ritmo forte e dia de prova."},
-{m:"Adidas",md:"Runfalcon 5",p:399,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Opção enxuta e acessível para os primeiros quilômetros."},
-{m:"Adidas",md:"Galaxy 7",p:349,n:["ini"],u:["caminhada","corrida"],pi:["neutra"],am:"macio",d:10,s:["asfalto","esteira"],obs:"Macio e leve, pensado para caminhada e trote tranquilo."},
-{m:"Adidas",md:"Adizero SL2",p:749,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Resposta rápida para quem já treina ritmo e busca performance."},
-{m:"Adidas",md:"Supernova Rise 2",p:849,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["asfalto"],obs:"Suporte suave para quem pronam e está evoluindo o volume de corrida."},
-{m:"Adidas",md:"Ultraboost 5X",p:1099,n:["int"],u:["corrida","caminhada"],pi:["neutra"],am:"macio",d:10,s:["asfalto"],obs:"Sucessor do Ultraboost 22 (já descontinuado): retorno de energia elevado, confortável também no uso do dia a dia."},
-{m:"Asics",md:"Gel-Contend 9",p:299,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Custo-benefício clássico para começar com segurança."},
-{m:"Asics",md:"Gel-Excite 10",p:399,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Evolução natural para quem já corre com regularidade."},
-{m:"Asics",md:"Gel-Nimbus 27",p:899,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Amortecimento premium da Asics, pensado para longas distâncias."},
-{m:"Asics",md:"Gel-Kayano 32",p:999,n:["int","avc"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:10,s:["asfalto"],obs:"Referência mundial em estabilidade para pisada pronada em alto volume."},
-{m:"Asics",md:"Novablast 5",p:999,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Espuma responsiva que estimula passadas mais rápidas."},
-{m:"Asics",md:"GT-1000 13",p:599,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["asfalto"],obs:"Suporte leve de entrada para quem pronam."},
+{m:"Nike",md:"Zoom Fly 6",p:899,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Placa de carbono para treinos de ritmo forte e dia de prova."},
+{m:"Adidas",md:"Runfalcon 5",p:475,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Opção enxuta e acessível para os primeiros quilômetros."},
+{m:"Adidas",md:"Galaxy 7",p:399,n:["ini"],u:["caminhada","corrida"],pi:["neutra"],am:"macio",d:10,s:["asfalto","esteira"],obs:"Macio e leve, pensado para caminhada e trote tranquilo."},
+{m:"Adidas",md:"Adizero SL2",p:799,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Resposta rápida para quem já treina ritmo e busca performance."},
+{m:"Adidas",md:"Supernova Rise 2",p:799,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["asfalto"],obs:"Suporte suave para quem pronam e está evoluindo o volume de corrida."},
+{m:"Adidas",md:"Ultraboost 5X",p:899,n:["int"],u:["corrida","caminhada"],pi:["neutra"],am:"macio",d:10,s:["asfalto"],obs:"Sucessor do Ultraboost 22 (já descontinuado): retorno de energia elevado, confortável também no uso do dia a dia."},
+{m:"Asics",md:"Gel-Contend 10",p:349,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Custo-benefício clássico para começar com segurança."},
+{m:"Asics",md:"Gel-Excite 11",p:449,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Evolução natural para quem já corre com regularidade."},
+{m:"Asics",md:"Gel-Nimbus 28",p:899,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Amortecimento premium da Asics, pensado para longas distâncias."},
+{m:"Asics",md:"Gel-Kayano 33",p:1199,n:["int","avc"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:10,s:["asfalto"],obs:"Referência mundial em estabilidade para pisada pronada em alto volume."},
+{m:"Asics",md:"Novablast 6",p:999,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Espuma responsiva que estimula passadas mais rápidas."},
+{m:"Asics",md:"GT-1000 13",p:499,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["asfalto"],obs:"Suporte leve de entrada para quem pronam."},
 {m:"Hoka",md:"Clifton 9",p:999,n:["int"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:5,s:["asfalto"],obs:"Amortecimento alto e leve, muito usado na transição para longas distâncias."},
-{m:"Hoka",md:"Bondi 9",p:1399,n:["ini","int"],u:["caminhada","corrida"],pi:["neutra","supinada"],am:"macio",d:4,s:["asfalto"],obs:"O mais acolchoado da Hoka, ótimo para quem busca o máximo de conforto."},
+{m:"Hoka",md:"Bondi 9",p:1499,n:["ini","int"],u:["caminhada","corrida"],pi:["neutra","supinada"],am:"macio",d:4,s:["asfalto"],obs:"O mais acolchoado da Hoka, ótimo para quem busca o máximo de conforto."},
 {m:"Hoka",md:"Mach 6",p:1199,n:["avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:5,s:["asfalto","pista"],obs:"Leve e responsivo para treinos de ritmo forte."},
-{m:"Hoka",md:"Arahi 7",p:899,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:5,s:["asfalto"],obs:"Estabilidade leve, sem o peso tradicional dos tênis de suporte."},
+{m:"Hoka",md:"Arahi 8",p:1199,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:5,s:["asfalto"],obs:"Estabilidade leve, sem o peso tradicional dos tênis de suporte."},
 {m:"Saucony",md:"Cohesion 16",p:399,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Entrada confiável para caminhada e corrida leve."},
 {m:"Saucony",md:"Ride 17",p:499,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Tênis neutro versátil para o treino diário."},
 {m:"Saucony",md:"Guide 17",p:899,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["asfalto"],obs:"Suporte equilibrado para pisada pronada em treinos de volume."},
 {m:"Saucony",md:"Triumph 21",p:899,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Amortecimento encorpado para recuperação e treinos longos."},
-{m:"Brooks",md:"Revel 7",p:499,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Visual esportivo e conforto para quem está começando."},
+{m:"Brooks",md:"Launch 11",p:799,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Visual esportivo e conforto para quem está começando."},
 {m:"Brooks",md:"Ghost 17",p:799,n:["int"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:12,s:["asfalto"],obs:"O \"coringa\" da Brooks: equilíbrio para qualquer tipo de treino."},
-{m:"Brooks",md:"Adrenaline GTS 24",p:899,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:12,s:["asfalto"],obs:"Suporte suave, referência mundial para pisada pronada."},
-{m:"Brooks",md:"Glycerin Max",p:999,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Amortecimento macio premium para treinos longos."},
-{m:"New Balance",md:"520v8",p:299,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Básico sólido para iniciar a rotina de treinos."},
-{m:"New Balance",md:"880v14",p:799,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Treino diário confiável com bom equilíbrio de conforto."},
+{m:"Brooks",md:"Adrenaline GTS 25",p:1299,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:12,s:["asfalto"],obs:"Suporte suave, referência mundial para pisada pronada."},
+{m:"Brooks",md:"Glycerin Max",p:1299,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Amortecimento macio premium para treinos longos."},
+{m:"New Balance",md:"520v8",p:399,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Básico sólido para iniciar a rotina de treinos."},
+{m:"New Balance",md:"880v15",p:599,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Treino diário confiável com bom equilíbrio de conforto."},
 {m:"New Balance",md:"Fresh Foam X 1080v14",p:899,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Amortecimento topo de linha para quem roda alto volume."},
 {m:"New Balance",md:"FuelCell Rebel v4",p:899,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"Resposta rápida para treinos intervalados e tiros."},
 {m:"Mizuno",md:"Wave Rider 28",p:699,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:12,s:["asfalto"],obs:"Clássico equilíbrio entre amortecimento e estabilidade."},
 {m:"Mizuno",md:"Wave Sky 8",p:799,n:["int","avc"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Amortecimento alto da Mizuno para quem quer conforto em qualquer ritmo."},
 {m:"Mizuno",md:"Wave Inspire 20",p:499,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:12,s:["asfalto"],obs:"Suporte técnico da Mizuno para pisada pronada."},
 {m:"Mizuno",md:"Wave Horizon 7",p:899,n:["int"],u:["corrida"],pi:["pronada"],am:"firme",d:12,s:["asfalto"],obs:"Maior suporte da linha, indicado para pronação mais acentuada."},
-{m:"On",md:"Cloud 5",p:849,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:6,s:["asfalto","esteira"],obs:"Visual leve para o dia a dia, versátil entre caminhada e corrida."},
+{m:"On",md:"Cloud 5",p:799,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:6,s:["asfalto","esteira"],obs:"Visual leve para o dia a dia, versátil entre caminhada e corrida."},
 {m:"On",md:"Cloudmonster 2",p:1149,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Amortecimento máximo da On, generoso para treinos longos."},
-{m:"On",md:"Cloudsurfer 2",p:959,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"O mais responsivo da linha On Cloud, bom para ritmos fortes."},
-{m:"Puma",md:"Softride Carson 2",p:399,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Espuma macia de entrada com bom custo-benefício."},
+{m:"On",md:"Cloudsurfer 2",p:1199,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"O mais responsivo da linha On Cloud, bom para ritmos fortes."},
+{m:"Puma",md:"ST Runner v3",p:299,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Espuma SoftFoam+ macia de entrada, bom custo-benefício para iniciar na corrida e caminhada."},
 {m:"Puma",md:"Velocity Nitro 3",p:699,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Espuma Nitro responsiva a um preço acessível."},
 {m:"Puma",md:"Deviate Nitro 3",p:899,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Placa de carbono da Puma para treinos de ritmo e dia de prova."},
-{m:"Fila",md:"Racer Curve 2",p:329,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Opção enxuta para quem está testando a corrida."},
+{m:"Fila",md:"Racer Speedzone",p:479,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Opção enxuta para quem está testando a corrida."},
 {m:"Fila",md:"KR6",p:299,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Intermediário de entrada com bom acabamento esportivo."},
-{m:"Fila",md:"KR7 Pro",p:449,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Opção intermediária da linha KR, bom custo-benefício nacional."},
-{m:"Under Armour",md:"Charged Stamina",p:299,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Entrada robusta da UA para o uso diário."},
-{m:"Under Armour",md:"Charged Quicker 2",p:349,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Intermediário versátil com bom custo-benefício."},
-{m:"Under Armour",md:"HOVR Sonic 5",p:649,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Espuma HOVR com boa absorção de impacto."},
+{m:"Fila",md:"KR7 Pro",p:399,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Opção intermediária da linha KR, bom custo-benefício nacional."},
+{m:"Under Armour",md:"Charged Skyline 4",p:349,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Entrada robusta da UA para o uso diário."},
+{m:"Under Armour",md:"Charged Quicker 2",p:475,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Intermediário versátil com bom custo-benefício."},
+{m:"Under Armour",md:"HOVR Sonic 5",p:465,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Espuma HOVR com boa absorção de impacto."},
 {m:"Olympikus",md:"Corre 4",p:399,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Marca brasileira, excelente porta de entrada e preço."},
-{m:"Olympikus",md:"Corre Vento 2",p:799,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"Super leve (168g), pensado para treinos de ritmo e provas de rua."},
-{m:"Olympikus",md:"Corre Supra 2",p:899,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Mais responsivo da linha Olympikus, ótimo custo-benefício."},
+{m:"Olympikus",md:"Corre Vento 3",p:399,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"Leve, pensado para treinos de ritmo e provas de rua."},
+{m:"Olympikus",md:"Corre Supra 2",p:799,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Mais responsivo da linha Olympikus, ótimo custo-benefício."},
 {m:"Olympikus",md:"Corre Pace",p:1999,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"Supertênis nacional com placa de carbono, projeto de performance da Olympikus."},
-{m:"Skechers",md:"Go Walk Joy",p:349,n:["ini"],u:["caminhada"],pi:["neutra"],am:"macio",d:4,s:["asfalto"],obs:"Leveza e maciez pensadas só para caminhada."},
+{m:"Skechers",md:"Go Walk Joy",p:299,n:["ini"],u:["caminhada"],pi:["neutra"],am:"macio",d:4,s:["asfalto"],obs:"Leveza e maciez pensadas só para caminhada."},
 {m:"Skechers",md:"Go Walk 7 Via",p:649,n:["ini","int"],u:["caminhada"],pi:["neutra"],am:"macio",d:4,s:["asfalto"],obs:"Amortecimento em espuma para caminhadas diárias longas."},
 {m:"Skechers",md:"Max Cushioning Elite",p:399,n:["int"],u:["caminhada","corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Maior amortecimento da Skechers, serve também para trote leve."},
-{m:"Asics",md:"Trabuco Max 5",p:1119,n:["int"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["trilha"],obs:"Amortecimento alto com tração pensada para trilhas técnicas."},
+{m:"Asics",md:"Trabuco Max 5",p:1399,n:["int"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["trilha"],obs:"Amortecimento alto com tração pensada para trilhas técnicas."},
 {m:"Hoka",md:"Speedgoat 6",p:1099,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:4,s:["trilha"],obs:"Referência mundial em trail, com grip agressivo em qualquer terreno."},
 {m:"Saucony",md:"Peregrine 14",p:599,n:["int"],u:["corrida"],pi:["neutra"],am:"firme",d:4,s:["trilha"],obs:"Grip agressivo e tênis ágil para trilhas técnicas."},
-{m:"Brooks",md:"Cascadia 18",p:999,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["trilha"],obs:"Estabilidade em trilha para quem pronam fora do asfalto. Distribuição Brooks no Brasil é limitada — verifique disponibilidade antes de indicar."},
+{m:"Brooks",md:"Cascadia 19",p:1399,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["trilha"],obs:"Estabilidade em trilha para quem pronam fora do asfalto. Brooks voltou a ter distribuição oficial no Brasil (e-commerce próprio + lojas especializadas)."},
 {m:"New Balance",md:"Hierro v8",p:799,n:["avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:6,s:["trilha"],obs:"Resposta precisa para trail running de alta performance."}
 ];
 
@@ -563,6 +571,7 @@ function startQuiz(){
   $("screen-quiz").hidden = false;
   current = 0;
   answers = {};
+  if(window.gtag) gtag('event', 'quiz_iniciado');
   renderQuestion();
 }
 
@@ -740,6 +749,20 @@ function showResults(){
                      .sort(function(a,b){ return b.score - a.score; });
 
   var top = scored.slice(0,3);
+
+  if(window.gtag && top.length){
+    gtag('event', 'recomendacao_gerada', {
+      marca: top[0].shoe.m,
+      modelo: top[0].shoe.md,
+      nivel: answers.nivel,
+      uso: answers.uso,
+      pisada: answers.pisada,
+      amortecimento: answers.amortecimento,
+      superficie: answers.superficie,
+      orcamento: answers.orcamento
+    });
+  }
+
   var list = $("results-list");
   list.innerHTML = "";
 
