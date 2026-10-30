@@ -563,6 +563,25 @@ var QUESTIONS = [
     {value:"medio", label:"70 a 90 kg"},
     {value:"pesado", label:"Acima de 90 kg"},
     {value:"na", label:"Prefiro não informar"}
+  ]},
+  {key:"marca", title:"Tem preferência por alguma marca?", sub:"Opcional — pode marcar mais de uma, ou nenhuma, e avançar direto.", multi:true, options:[
+    {value:"361°", label:"361°"},
+    {value:"Adidas", label:"Adidas"},
+    {value:"Asics", label:"Asics"},
+    {value:"Brooks", label:"Brooks"},
+    {value:"Chunta", label:"Chunta"},
+    {value:"Fila", label:"Fila"},
+    {value:"Hoka", label:"Hoka"},
+    {value:"Mizuno", label:"Mizuno"},
+    {value:"New Balance", label:"New Balance"},
+    {value:"Nike", label:"Nike"},
+    {value:"Olympikus", label:"Olympikus"},
+    {value:"On", label:"On"},
+    {value:"Puma", label:"Puma"},
+    {value:"Saucony", label:"Saucony"},
+    {value:"Skechers", label:"Skechers"},
+    {value:"Under Armour", label:"Under Armour"},
+    {value:"Xtep", label:"Xtep"}
   ]}
 ];
 
@@ -624,12 +643,15 @@ function renderQuestion(){
     $("q-hint").open = false;
   } else { $("q-hint").hidden = true; }
 
+  if(q.multi && !Array.isArray(answers[q.key])) answers[q.key] = [];
+
   var opts = $("q-options");
   opts.innerHTML = "";
   q.options.forEach(function(o){
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "opt" + (answers[q.key]===o.value ? " sel" : "");
+    var isSel = q.multi ? (answers[q.key].indexOf(o.value) !== -1) : (answers[q.key]===o.value);
+    btn.className = "opt" + (isSel ? " sel" : "");
     var lab = document.createElement("span");
     lab.className = "opt-label";
     lab.textContent = o.label;
@@ -640,18 +662,25 @@ function renderQuestion(){
       desc.textContent = o.desc;
       btn.appendChild(desc);
     }
-    btn.onclick = function(val){ return function(){ selectOption(q.key, val); }; }(o.value);
+    btn.onclick = function(val){ return function(){ q.multi ? toggleOption(q.key, val) : selectOption(q.key, val); }; }(o.value);
     opts.appendChild(btn);
   });
 
   $("q-skip").hidden = !q.skippable;
   $("btn-back").disabled = (current===0);
-  $("btn-next").disabled = !answers[q.key];
+  $("btn-next").disabled = q.multi ? false : !answers[q.key];
   $("btn-next").textContent = (current === QUESTIONS.length-1) ? "Ver recomendações" : "Avançar";
 }
 
 function selectOption(key, value){
   answers[key] = value;
+  renderQuestion();
+}
+
+function toggleOption(key, value){
+  var arr = answers[key];
+  var idx = arr.indexOf(value);
+  if(idx === -1) arr.push(value); else arr.splice(idx, 1);
   renderQuestion();
 }
 
@@ -730,6 +759,10 @@ function scoreShoe(shoe, a, opts){
   opts = opts || {};
   if(a.uso && shoe.u.indexOf(a.uso) === -1) return null;
 
+  var hasMarcaPref = !!(a.marca && a.marca.length);
+  var marcaMatch = hasMarcaPref && a.marca.indexOf(shoe.m) !== -1;
+  if(hasMarcaPref && !marcaMatch && !opts.ignoreMarca) return null;
+
   var range = BUDGET_RANGES[a.orcamento];
   var inBudget = shoe.p >= range[0] && shoe.p <= range[1];
   if(!inBudget && !opts.ignoreBudget) return null;
@@ -776,7 +809,16 @@ function scoreShoe(shoe, a, opts){
   if(a.peso === "pesado" && shoe.am === "macio") score += 5;
   if(a.peso === "leve" && shoe.am === "firme") score += 3;
 
-  return {shoe:shoe, score:score, reasons:reasons, inBudget:inBudget};
+  if(hasMarcaPref){
+    if(marcaMatch){
+      score += 14;
+      reasons.push("é da marca que você prefere");
+    } else {
+      reasons.push("fora das marcas que você prefere — poucas opções técnicas compatíveis entre elas");
+    }
+  }
+
+  return {shoe:shoe, score:score, reasons:reasons, inBudget:inBudget, marcaMatch: hasMarcaPref ? marcaMatch : null};
 }
 
 function showResults(){
@@ -795,7 +837,17 @@ function showResults(){
     var fallback = SHOES.map(function(sh){ return scoreShoe(sh, answers, {ignoreBudget:true}); })
                          .filter(function(r){ return r !== null && !already[r.shoe.m + "|" + r.shoe.md]; })
                          .sort(function(a,b){ return b.score - a.score; });
+    fallback.forEach(function(r){ already[r.shoe.m + "|" + r.shoe.md] = true; });
     top = top.concat(fallback.slice(0, 3 - top.length));
+  }
+
+  if(top.length < 3 && answers.marca && answers.marca.length){
+    var already2 = {};
+    top.forEach(function(r){ already2[r.shoe.m + "|" + r.shoe.md] = true; });
+    var fallbackMarca = SHOES.map(function(sh){ return scoreShoe(sh, answers, {ignoreBudget:true, ignoreMarca:true}); })
+                         .filter(function(r){ return r !== null && !already2[r.shoe.m + "|" + r.shoe.md]; })
+                         .sort(function(a,b){ return b.score - a.score; });
+    top = top.concat(fallbackMarca.slice(0, 3 - top.length));
   }
   var list = $("results-list");
   list.innerHTML = "";
