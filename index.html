@@ -885,3 +885,16 @@ function boot(data){
       $("screen-intro").hidden = true;
       showResults();
     } else {
+      $("screen-intro").hidden = true;
+      $("screen-quiz").hidden = false;
+      renderQuestion();
+    }
+  }
+}
+try{
+  if(window.claude && window.claude.hot){
+    window.claude.hot.snapshot(snapshot);
+    window.claude.hot.ready ? window.claude.hot.ready(boot) : boot(window.claude.hot.data);
+  }
+}catch(e){}
+</script>
