@@ -566,6 +566,17 @@ var QUESTIONS = [
   ]}
 ];
 
+(function(){
+  var nums = document.querySelectorAll(".intro-meta .num");
+  if(nums.length >= 3){
+    nums[0].textContent = SHOES.length;
+    nums[1].textContent = QUESTIONS.length;
+    var brands = {};
+    SHOES.forEach(function(s){ brands[s.m] = true; });
+    nums[2].textContent = Object.keys(brands).length;
+  }
+})();
+
 var LABEL_NIVEL = {ini:"iniciante", int:"intermediário", avc:"avançado"};
 var LABEL_PISADA = {neutra:"neutra", pronada:"pronada", supinada:"supinada"};
 var LABEL_AMORT = {macio:"macio", equilibrado:"equilibrado", firme:"firme"};
@@ -874,16 +885,3 @@ function boot(data){
       $("screen-intro").hidden = true;
       showResults();
     } else {
-      $("screen-intro").hidden = true;
-      $("screen-quiz").hidden = false;
-      renderQuestion();
-    }
-  }
-}
-try{
-  if(window.claude && window.claude.hot){
-    window.claude.hot.snapshot(snapshot);
-    window.claude.hot.ready ? window.claude.hot.ready(boot) : boot(window.claude.hot.data);
-  }
-}catch(e){}
-</script>
