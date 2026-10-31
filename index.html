@@ -797,7 +797,19 @@ function budgetProximityScore(preco, range){
 
 function scoreShoe(shoe, a, opts){
   opts = opts || {};
-  if(a.uso && shoe.u.indexOf(a.uso) === -1) return null;
+
+  // Superfície: tênis de trilha só vai para quem treina em trilha, e vice-versa.
+  var ehTrilha = shoe.s.indexOf("trilha") !== -1;
+  var soTrilha = ehTrilha && shoe.s.length === 1;
+  var querTrilha = a.superficie === "trilha";
+  if(!opts.ignoreSuperficie){
+    if(soTrilha && !querTrilha) return null;
+    if(querTrilha && !ehTrilha) return null;
+  }
+
+  // Na trilha, um tênis de trail running também atende quem vai caminhar.
+  var trilhaCaminhada = querTrilha && ehTrilha && a.uso === "caminhada" && shoe.u.indexOf("caminhada") === -1;
+  if(a.uso && shoe.u.indexOf(a.uso) === -1 && !trilhaCaminhada) return null;
 
   var hasMarcaPref = !!(a.marca && a.marca.length);
   var marcaMatch = hasMarcaPref && a.marca.indexOf(shoe.m) !== -1;
@@ -835,7 +847,7 @@ function scoreShoe(shoe, a, opts){
     : (shoe.s.indexOf(a.superficie) !== -1);
   if(supMatch){
     score += 12;
-    reasons.push("bom para " + LABEL_SUP[a.superficie]);
+    reasons.push(trilhaCaminhada ? "tênis de trilha, com tração e proteção que também servem para caminhar em trilha" : "bom para " + LABEL_SUP[a.superficie]);
   }
 
   if(inBudget){
@@ -861,10 +873,7 @@ function scoreShoe(shoe, a, opts){
   return {shoe:shoe, score:score, reasons:reasons, inBudget:inBudget, marcaMatch: hasMarcaPref ? marcaMatch : null};
 }
 
-function showResults(){
-  $("screen-quiz").hidden = true;
-  $("screen-results").hidden = false;
-
+function computeTop(answers){
   var scored = SHOES.map(function(sh){ return scoreShoe(sh, answers); })
                      .filter(function(r){ return r !== null; })
                      .sort(function(a,b){ return b.score - a.score; });
@@ -889,6 +898,24 @@ function showResults(){
                          .sort(function(a,b){ return b.score - a.score; });
     top = top.concat(fallbackMarca.slice(0, 3 - top.length));
   }
+
+  if(top.length < 3){
+    var already3 = {};
+    top.forEach(function(r){ already3[r.shoe.m + "|" + r.shoe.md] = true; });
+    var fallbackSup = SHOES.map(function(sh){ return scoreShoe(sh, answers, {ignoreBudget:true, ignoreMarca:true, ignoreSuperficie:true}); })
+                         .filter(function(r){ return r !== null && !already3[r.shoe.m + "|" + r.shoe.md]; })
+                         .sort(function(a,b){ return b.score - a.score; });
+    top = top.concat(fallbackSup.slice(0, 3 - top.length));
+  }
+  return top;
+}
+
+function showResults(){
+  $("screen-quiz").hidden = true;
+  $("screen-results").hidden = false;
+
+  var top = computeTop(answers);
+
   var rm = $("results-marca");
   rm.innerHTML = "";
   var marcasSel = (answers.marca && answers.marca.length) ? answers.marca : [];
