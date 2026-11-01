@@ -20,6 +20,9 @@
   --border:#DED5E0;
   --lane-off:#E3D9E5;
   --ok-bg:#F1E3F2;
+  --good:#2E7D32;
+  --warn:#8A5A00;
+  --bad:#B3261E;
   --font-display:"Big Shoulders Display",system-ui,sans-serif;
   --font-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -39,6 +42,9 @@
     --border:#3A303D;
     --lane-off:#332A36;
     --ok-bg:#3A2A3D;
+    --good:#7BC67E;
+    --warn:#E0B44C;
+    --bad:#F2867E;
     color-scheme:dark;
   }
 }
@@ -56,6 +62,9 @@
   --border:#3A303D;
   --lane-off:#332A36;
   --ok-bg:#3A2A3D;
+  --good:#7BC67E;
+  --warn:#E0B44C;
+  --bad:#F2867E;
   color-scheme:dark;
 }
 
@@ -90,8 +99,8 @@ body{
   line-height:0;
   flex:none;
 }
-.brand-logo{height:64px;width:auto;display:block;}
-@media (min-width:600px){ .brand-logo{height:80px;} }
+.brand-logo{height:52px;width:auto;display:block;}
+@media (min-width:600px){ .brand-logo{height:64px;} }
 .brand-tag{
   font-family:var(--font-mono);
   font-size:11px;
@@ -305,6 +314,27 @@ details.hint p{font-size:14px;color:var(--fg-muted);line-height:1.55;margin:10px
   padding:11px 18px;border-radius:11px;
   text-decoration:none;
 }
+.check-box{border:1.5px solid var(--border);border-radius:16px;padding:20px;margin-top:8px;background:var(--surface);}
+.check-box h2{font-family:var(--font-display);font-size:19px;font-weight:700;margin:0 0 6px;}
+.check-box > p{font-size:14px;color:var(--fg-muted);line-height:1.55;margin:0 0 12px;}
+.check-form{display:flex;gap:8px;flex-wrap:wrap;}
+.check-form input{flex:1 1 200px;min-width:0;font-family:var(--font-body);font-size:16px;padding:11px 13px;border-radius:11px;border:1.5px solid var(--border);background:var(--surface-2);color:var(--fg);}
+.check-form input:focus{outline:2px solid var(--accent-2);outline-offset:1px;}
+.check-form .btn{flex:0 0 auto;}
+.check-out{margin-top:14px;font-size:14.5px;line-height:1.55;}
+.check-out h3{font-family:var(--font-display);font-size:18px;margin:0 0 2px;}
+.check-out .sub{color:var(--fg-muted);font-size:13.5px;margin:0 0 10px;}
+.verdict{display:inline-block;font-weight:700;font-size:14px;padding:5px 11px;border-radius:999px;border:1.5px solid currentColor;margin:4px 0 10px;}
+.verdict.good{color:var(--good);} .verdict.warn{color:var(--warn);} .verdict.bad{color:var(--bad);}
+.crit{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-direction:column;gap:7px;}
+.crit li{display:flex;gap:9px;align-items:flex-start;}
+.crit .ic{flex:none;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;margin-top:1px;}
+.crit .ic.good{background:var(--good);} .crit .ic.warn{background:var(--warn);} .crit .ic.bad{background:var(--bad);}
+.crit b{font-weight:700;}
+.check-note{background:var(--surface-2);border-radius:12px;padding:12px 14px;margin:10px 0;font-size:14px;}
+.pick-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.pick-row button{font-family:var(--font-body);font-size:14px;font-weight:600;padding:7px 12px;border-radius:9px;border:1.5px solid var(--border);background:var(--surface-2);color:var(--fg);cursor:pointer;}
+.pick-row button:hover{border-color:var(--accent-2);}
 .disclaimer{font-size:12px;color:var(--fg-muted);line-height:1.5;margin-top:14px;}
 
 .link-row{text-align:center;margin-top:4px;}
@@ -382,6 +412,26 @@ details.hint p{font-size:14px;color:var(--fg-muted);line-height:1.55;margin:10px
     </div>
     <div id="results-marca" class="res-marca" hidden></div>
     <div id="results-list"></div>
+    <div class="check-box" id="check-box">
+      <h2>Quer saber se algum outro modelo possui o seu perfil?</h2>
+      <p>Digite a marca e o modelo. A análise usa as mesmas respostas do seu diagnóstico.</p>
+      <form class="check-form" onsubmit="checkModel(event)">
+        <input id="check-input" list="check-list" type="text" placeholder="Ex.: Asics Novablast 5" autocomplete="off" aria-label="Marca e modelo do tênis">
+        <datalist id="check-list"></datalist>
+        <button class="btn primary" type="submit">Analisar</button>
+      </form>
+      <div id="check-result" class="check-out" aria-live="polite" hidden></div>
+      <p class="disclaimer" style="margin-top:12px;">Quando um modelo não está na base, registramos o nome buscado e as respostas do diagnóstico, sem nome nem contato, para decidir quais tênis incluir no catálogo.</p>
+    </div>
+    <form name="modelo-nao-encontrado" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="modelo-nao-encontrado">
+      <input type="text" name="modelo">
+      <input type="text" name="situacao">
+      <input type="text" name="marca">
+      <input type="text" name="modelo_proximo">
+      <input type="text" name="perfil">
+      <input type="text" name="bot-field">
+    </form>
     <div class="cta">
       <h2>Quer confirmar com um especialista?</h2>
       <p>A equipe da PULSAR pode validar essa indicação considerando sua biomecânica e seus objetivos de treino.</p>
@@ -952,6 +1002,10 @@ function showResults(){
 
   var top = computeTop(answers);
 
+  $("check-input").value = "";
+  $("check-result").hidden = true;
+  $("check-result").innerHTML = "";
+
   var rm = $("results-marca");
   rm.innerHTML = "";
   var marcasSel = (answers.marca && answers.marca.length) ? answers.marca : [];
@@ -1050,6 +1104,249 @@ function showResults(){
 }
 
 /* Hot-reload: preserve quiz progress across republishes */
+
+/* ---------- Consulta de outro modelo ---------- */
+var WA_NUMERO = "5531988324649";
+
+function normTxt(t){
+  return (t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/°/g, "").replace(/\btenis\b/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+}
+function linhaTxt(t){
+  // remove números de geração (5, v6, 2.0, iii) para achar a mesma linha de produto
+  return normTxt(t).split(" ").map(function(w){
+    return w.replace(/^(\d{3,})v\d+$/, "$1");          // 1080v14 -> 1080
+  }).filter(function(w){
+    return !/^v\d+$/.test(w) && !/^\d{1,2}$/.test(w) && !/^(ii|iii|iv|vi|vii|viii|ix|x)$/.test(w);
+  }).join(" ");
+}
+function nomeShoe(sh){ return sh.m + " " + sh.md; }
+function labelResposta(key, value){
+  var q = QUESTIONS.filter(function(x){ return x.key === key; })[0];
+  if(!q) return value;
+  var o = q.options.filter(function(x){ return x.value === value; })[0];
+  return o ? o.label : value;
+}
+function escHtml(t){ return String(t).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+
+(function(){
+  var dl = document.getElementById("check-list");
+  if(!dl) return;
+  SHOES.map(nomeShoe).sort(function(a,b){ return a.localeCompare(b, "pt"); }).forEach(function(n){
+    var op = document.createElement("option"); op.value = n; dl.appendChild(op);
+  });
+})();
+
+function buscarModelo(texto){
+  var q = normTxt(texto);
+  if(!q) return {tipo:"vazio"};
+  var exato = SHOES.filter(function(sh){ return normTxt(nomeShoe(sh)) === q || normTxt(sh.md) === q; });
+  if(exato.length === 1) return {tipo:"exato", shoe:exato[0]};
+
+  var parcial = SHOES.filter(function(sh){
+    var n = normTxt(nomeShoe(sh));
+    return n.indexOf(q) !== -1 || (q.indexOf(normTxt(sh.md)) !== -1 && normTxt(sh.md).length >= 3);
+  });
+  if(parcial.length === 1) return {tipo:"exato", shoe:parcial[0]};
+
+  var marcas = SHOES.map(function(sh){ return sh.m; }).filter(function(m, i, arr){ return arr.indexOf(m) === i; });
+  var marca = marcas.filter(function(m){ var nm = normTxt(m); return (" " + q + " ").indexOf(" " + nm + " ") !== -1; })[0] || null;
+
+  var lq = linhaTxt(texto);
+  var lqSemMarca = marca ? lq.replace(normTxt(marca), "").trim() : lq;
+  var daMarca = function(sh){ return !marca || sh.m === marca; };
+  // 1º: mesma linha exata (ex.: "Pegasus 42" -> "Pegasus 41")
+  var mesmaLinha = SHOES.filter(function(sh){
+    var l = linhaTxt(sh.md);
+    return l.length >= 3 && daMarca(sh) && (lqSemMarca === l || lq === linhaTxt(nomeShoe(sh)));
+  });
+  // 2º: todas as palavras digitadas aparecem no nome da linha (ex.: "1080v15" -> "Fresh Foam X 1080v14")
+  if(!mesmaLinha.length && lqSemMarca){
+    var pal = lqSemMarca.split(" ").filter(function(w){ return w.length >= 3; });
+    if(pal.length){
+      mesmaLinha = SHOES.filter(function(sh){
+        var tok = linhaTxt(sh.md).split(" ");
+        return daMarca(sh) && pal.every(function(w){ return tok.indexOf(w) !== -1; });
+      });
+    }
+  }
+  if(mesmaLinha.length === 1) return {tipo:"geracao", shoe:mesmaLinha[0], pedido:texto};
+
+  if(parcial.length > 1 && parcial.length <= 10) return {tipo:"varios", lista:parcial};
+  if(mesmaLinha.length > 1) return {tipo:"varios", lista:mesmaLinha};
+  return {tipo:"fora", pedido:texto, marca:marca};
+}
+
+function analisarModelo(sh, a){
+  var itens = [];
+  var duro = false, ressalva = false;
+  function add(st, t, x){ itens.push({st:st, t:t, x:x}); if(st === "bad") duro = true; if(st === "warn") ressalva = true; }
+
+  var ehTrilha = sh.s.indexOf("trilha") !== -1;
+  var soTrilha = ehTrilha && sh.s.length === 1;
+  var querTrilha = a.superficie === "trilha";
+
+  var usoOk = sh.u.indexOf(a.uso) !== -1 || (querTrilha && ehTrilha && a.uso === "caminhada");
+  add(usoOk ? "good" : "bad", "Uso",
+    usoOk ? "serve para " + a.uso + "."
+          : "é pensado para " + sh.u.join(" e ") + ", e você respondeu " + a.uso + ".");
+
+  if(querTrilha && !ehTrilha){
+    add("bad", "Superfície", "é um tênis de asfalto, sem a tração e a proteção que a trilha exige.");
+  } else if(soTrilha && !querTrilha){
+    add("bad", "Superfície", "é um tênis de trilha; no " + LABEL_SUP[a.superficie] + " o solado com cravos fica instável e desgasta rápido.");
+  } else {
+    var supOk = (a.superficie === "esteira") ? (sh.s.indexOf("asfalto") !== -1 || sh.s.indexOf("esteira") !== -1) : sh.s.indexOf(a.superficie) !== -1;
+    add(supOk ? "good" : "warn", "Superfície",
+      supOk ? "adequado para " + LABEL_SUP[a.superficie] + "."
+            : "feito para " + sh.s.map(function(x){ return LABEL_SUP[x]; }).join(" e ") + "; funciona em " + LABEL_SUP[a.superficie] + ", mas não é a especialidade dele.");
+  }
+
+  var nivelOk = sh.n.indexOf(a.nivel) !== -1;
+  add(nivelOk ? "good" : "bad", "Nível",
+    nivelOk ? "serve para " + listaNiveis(sh.n) + ", o que inclui o seu nível (" + LABEL_NIVEL[a.nivel] + ")."
+            : "é pensado para " + listaNiveis(sh.n) + ", e você respondeu " + LABEL_NIVEL[a.nivel] + "." +
+              (a.nivel === "ini" && sh.n.indexOf("avc") !== -1 ? " Tênis de alto desempenho exigem técnica e musculatura que quem está começando ainda está desenvolvendo." : ""));
+
+  var ps = (a.pisada === "nao_sei") ? "neutra" : a.pisada;
+  var pisadaOk = sh.pi.indexOf(ps) !== -1;
+  add(pisadaOk ? "good" : "bad", "Pisada",
+    pisadaOk ? "indicado para pisada " + sh.pi.map(function(x){ return LABEL_PISADA[x]; }).join(" e ") + (a.pisada === "nao_sei" ? " (como você não sabe a sua, consideramos neutra)." : ", que inclui a sua (" + ps + ").")
+             : "indicado para pisada " + sh.pi.map(function(x){ return LABEL_PISADA[x]; }).join(" e ") + ", e a sua é " + ps + "." +
+               (ps === "pronada" ? " Falta o suporte que a pisada pronada pede." : ps === "supinada" ? " Falta o amortecimento extra que a pisada supinada pede." : ""));
+
+  if(sh.am === a.amortecimento) add("good", "Amortecimento", "é " + LABEL_AMORT[sh.am] + ", como você prefere.");
+  else add("warn", "Amortecimento", "é " + LABEL_AMORT[sh.am] + ", e você prefere " + LABEL_AMORT[a.amortecimento] + (adjacentAmort(sh.am, a.amortecimento) ? " (diferença pequena)." : " (sensação bem diferente)."));
+
+  var range = BUDGET_RANGES[a.orcamento];
+  var noOrc = sh.p >= range[0] && sh.p <= range[1];
+  add(noOrc ? "good" : "warn", "Preço",
+    "R$ " + sh.p.toLocaleString("pt-BR") + (noOrc ? ", dentro da sua faixa (" + labelResposta("orcamento", a.orcamento) + ")."
+      : (sh.p > range[1] ? ", acima" : ", abaixo") + " da sua faixa (" + labelResposta("orcamento", a.orcamento) + ")."));
+
+  if(a.marca && a.marca.length){
+    var mOk = a.marca.indexOf(sh.m) !== -1;
+    add(mOk ? "good" : "warn", "Marca", mOk ? "é da marca que você prefere." : "não é das marcas que você marcou (" + a.marca.join(", ") + ").");
+  }
+
+  var veredito = duro ? {cls:"bad", txt:"Não é indicado para o seu perfil"}
+               : ressalva ? {cls:"warn", txt:"Indicado, com ressalvas"}
+               : {cls:"good", txt:"Indicado para o seu perfil"};
+  return {itens:itens, veredito:veredito, duro:duro};
+}
+
+function linkWhats(pedido){
+  var a = answers;
+  var perfil = "nível " + LABEL_NIVEL[a.nivel] + ", " + a.uso + ", pisada " + labelResposta("pisada", a.pisada).toLowerCase() +
+    ", amortecimento " + LABEL_AMORT[a.amortecimento] + ", " + LABEL_SUP[a.superficie] + ", orçamento " + labelResposta("orcamento", a.orcamento);
+  var msg = "Olá, PULSAR! Fiz o diagnóstico no myTenis e queria saber se o " + pedido + " serve para o meu perfil: " + perfil + ".";
+  return "https://wa.me/" + WA_NUMERO + "?text=" + encodeURIComponent(msg);
+}
+
+function alternativasDaMarca(marca, excluir){
+  var a2 = {};
+  for(var k in answers) a2[k] = answers[k];
+  a2.marca = [marca];
+  return computeTop(a2).filter(function(r){
+    return r.shoe.m === marca && r.shoe !== excluir &&
+      r.shoe.n.indexOf(answers.nivel) !== -1 &&
+      r.shoe.pi.indexOf(answers.pisada === "nao_sei" ? "neutra" : answers.pisada) !== -1;
+  }).slice(0, 2);
+}
+
+function htmlAnalise(sh, intro){
+  var an = analisarModelo(sh, answers);
+  var top = computeTop(answers);
+  var pos = -1;
+  top.forEach(function(r, i){ if(r.shoe === sh) pos = i; });
+
+  var h = intro ? '<div class="check-note">' + intro + '</div>' : "";
+  h += '<h3>' + escHtml(nomeShoe(sh)) + '</h3><p class="sub">R$ ' + sh.p.toLocaleString("pt-BR") +
+       (sh.d != null ? ' · drop ' + sh.d + ' mm' : '') + ' · ' + escHtml(sh.obs) + '</p>';
+  h += '<span class="verdict ' + an.veredito.cls + '">' + an.veredito.txt + '</span>';
+  h += '<ul class="crit">' + an.itens.map(function(it){
+    var ic = it.st === "good" ? "✓" : it.st === "warn" ? "!" : "✕";
+    return '<li><span class="ic ' + it.st + '" aria-hidden="true">' + ic + '</span><span><b>' + it.t + ':</b> ' + escHtml(it.x) + '</span></li>';
+  }).join("") + '</ul>';
+
+  if(pos !== -1){
+    h += '<div class="check-note">Esse modelo já é o seu <b>' + (pos+1) + 'º indicado</b> no diagnóstico acima.</div>';
+  } else if(an.duro){
+    var alt = alternativasDaMarca(sh.m, sh);
+    h += '<div class="check-note">' + (alt.length
+      ? 'Se você gosta da ' + escHtml(sh.m) + ', para o seu perfil prefira: <b>' + alt.map(function(r){ return escHtml(r.shoe.md); }).join('</b> ou <b>') + '</b>.'
+      : 'Para o seu perfil, os 3 tênis indicados acima continuam sendo as melhores opções.') + '</div>';
+  } else {
+    h += '<div class="check-note">Ele não entrou nos seus 3 indicados porque outros modelos encaixaram um pouco melhor no conjunto das respostas, mas é uma opção válida para você.</div>';
+  }
+  return h;
+}
+
+
+var buscasRegistradas = {};
+function registrarBusca(texto, situacao, marca, proximo){
+  var chave = normTxt(texto) + "|" + situacao;
+  if(!texto || buscasRegistradas[chave]) return;
+  buscasRegistradas[chave] = true;
+  var a = answers;
+  var perfil = [LABEL_NIVEL[a.nivel], a.uso, "pisada " + a.pisada, "amortecimento " + a.amortecimento,
+                a.superficie, labelResposta("orcamento", a.orcamento),
+                (a.marca && a.marca.length) ? "marca: " + a.marca.join("/") : "sem marca preferida"].join("; ");
+  var dados = new URLSearchParams({
+    "form-name": "modelo-nao-encontrado",
+    "modelo": texto.slice(0, 120),
+    "situacao": situacao,
+    "marca": marca || "",
+    "modelo_proximo": proximo || "",
+    "perfil": perfil
+  });
+  try{
+    if(location.protocol.indexOf("http") !== 0) return;   // não envia ao abrir o arquivo localmente
+    fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:dados.toString()})
+      .catch(function(){});
+  }catch(e){}
+}
+
+function checkModel(ev){
+  if(ev) ev.preventDefault();
+  var texto = $("check-input").value.trim();
+  var out = $("check-result");
+  var r = buscarModelo(texto);
+  var h = "";
+
+  if(r.tipo === "vazio"){
+    h = '<p class="sub">Digite a marca e o modelo, por exemplo "Mizuno Wave Rider 28".</p>';
+  } else if(r.tipo === "exato"){
+    h = htmlAnalise(r.shoe);
+  } else if(r.tipo === "geracao"){
+    registrarBusca(r.pedido, "outra geração na base", r.shoe.m, nomeShoe(r.shoe));
+    h = htmlAnalise(r.shoe, 'O <b>' + escHtml(r.pedido) + '</b> ainda não está na nossa base, mas temos o <b>' + escHtml(nomeShoe(r.shoe)) +
+      '</b>, de outra geração da mesma linha. A análise abaixo é dessa versão; uma geração nova pode mudar amortecimento, drop e peso.');
+    h += '<a class="wa-link" href="' + linkWhats(r.pedido) + '" target="_blank" rel="noopener">Perguntar à PULSAR sobre o ' + escHtml(r.pedido) + '</a>';
+  } else if(r.tipo === "varios"){
+    h = '<p class="sub">Encontramos mais de um modelo. Qual deles?</p><div class="pick-row">' +
+      r.lista.map(function(sh){ return '<button type="button" data-n="' + escHtml(nomeShoe(sh)) + '">' + escHtml(nomeShoe(sh)) + '</button>'; }).join("") + '</div>';
+  } else {
+    registrarBusca(texto, "fora da base", r.marca, "");
+    var alt = r.marca ? alternativasDaMarca(r.marca, null) : [];
+    h = '<div class="check-note">O <b>' + escHtml(texto) + '</b> ainda não está na nossa base de ' + SHOES.length +
+      ' modelos. Para não arriscar uma indicação sem ficha técnica conferida, não fazemos a análise automática dele.</div>';
+    if(alt.length){
+      h += '<p>Da <b>' + escHtml(r.marca) + '</b>, os modelos da nossa base que combinam com o seu perfil são: <b>' +
+        alt.map(function(x){ return escHtml(x.shoe.md); }).join('</b> e <b>') + '</b>.</p>';
+    } else if(r.marca){
+      h += '<p>Na nossa base, nenhum modelo da ' + escHtml(r.marca) + ' combina com o seu perfil; os 3 indicados acima continuam sendo as melhores opções.</p>';
+    }
+    h += '<p>Se quiser uma resposta sobre esse modelo, a equipe da PULSAR analisa para você:</p>' +
+      '<a class="wa-link" href="' + linkWhats(texto) + '" target="_blank" rel="noopener">Perguntar à PULSAR sobre o ' + escHtml(texto) + '</a>';
+  }
+  out.innerHTML = h;
+  out.hidden = false;
+  Array.prototype.forEach.call(out.querySelectorAll(".pick-row button"), function(b){
+    b.onclick = function(){ $("check-input").value = b.getAttribute("data-n"); checkModel(); };
+  });
+}
+
 function snapshot(){ return {current:current, answers:answers, done: !$("screen-results").hidden}; }
 function boot(data){
   if(data && data.answers && Object.keys(data.answers).length){
