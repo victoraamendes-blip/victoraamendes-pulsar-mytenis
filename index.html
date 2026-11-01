@@ -416,7 +416,7 @@ details.hint p{font-size:14px;color:var(--fg-muted);line-height:1.55;margin:10px
       <h2>Quer saber se algum outro modelo possui o seu perfil?</h2>
       <p>Digite a marca e o modelo. A análise usa as mesmas respostas do seu diagnóstico.</p>
       <form class="check-form" onsubmit="checkModel(event)">
-        <input id="check-input" list="check-list" type="text" placeholder="Ex.: Asics Novablast 5" autocomplete="off" aria-label="Marca e modelo do tênis">
+        <input id="check-input" list="check-list" type="text" placeholder="Ex.: Asics Novablast 6" autocomplete="off" aria-label="Marca e modelo do tênis">
         <datalist id="check-list"></datalist>
         <button class="btn primary" type="submit">Analisar</button>
       </form>
@@ -518,7 +518,7 @@ var SHOES = [
 {m:"Asics",md:"Gel-Excite 10",ano:2023,p:449,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Evolução natural para quem já corre com regularidade."},
 {m:"Asics",md:"Gel-Nimbus 28",ano:2026,p:1299,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Amortecimento premium da Asics com FF Blast+ e PureGEL, para rodagens e longões. Geração atual, sucessora do Nimbus 27."},
 {m:"Asics",md:"Gel-Kayano 32",ano:2025,p:1299,n:["int","avc"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:10,s:["asfalto"],obs:"Referência mundial em estabilidade para pisada pronada em alto volume."},
-{m:"Asics",md:"Novablast 5",ano:2025,p:999,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Espuma responsiva que estimula passadas mais rápidas."},
+{m:"Asics",md:"Novablast 6",ano:2026,p:999,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Geração atual, sucessora do Novablast 5, com FF Blast Max e inserto de FF Turbo² no antepé, para rodagens fáceis e longas com margem para ritmos mais fortes. Peça um número acima do habitual."},
 {m:"Asics",md:"GT-1000 13",ano:2024,p:749,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:8,s:["asfalto"],obs:"Suporte leve de entrada para quem pronam."},
 {m:"Hoka",md:"Clifton 9",ano:2023,p:999,n:["int"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:5,s:["asfalto"],obs:"Amortecimento alto e leve, muito usado na transição para longas distâncias."},
 {m:"Hoka",md:"Bondi 9",ano:2025,p:1399,n:["ini","int"],u:["caminhada","corrida"],pi:["neutra","supinada"],am:"macio",d:4,s:["asfalto"],obs:"O mais acolchoado da Hoka, ótimo para quem busca o máximo de conforto."},
@@ -533,13 +533,13 @@ var SHOES = [
 {m:"Brooks",md:"Glycerin Max",ano:2024,p:1799,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Amortecimento macio premium para treinos longos. Preço verificado na Centauro, distribuidora oficial da Brooks no Brasil — ticket mais alto da linha."},
 {m:"New Balance",md:"520v8",ano:2022,p:399,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Básico sólido para iniciar a rotina de treinos."},
 {m:"New Balance",md:"880v14",ano:2024,p:799,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Treino diário confiável com bom equilíbrio de conforto."},
-{m:"New Balance",md:"Fresh Foam X 1080v14",ano:2024,p:1299,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Amortecimento topo de linha para quem roda alto volume."},
+{m:"New Balance",md:"Infinion 1080v15",ano:2025,p:1299,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Geração atual do 1080, sucessora do 1080v14, com espuma Infinion. Amortecimento topo de linha para quem roda alto volume.",al:["1080v15","1080 v15","Infinion 1080 v15","Fresh Foam X 1080v15"]},
 {m:"New Balance",md:"FuelCell Rebel v5",ano:2025,p:1099,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"macio",d:6,s:["asfalto","pista"],obs:"Leve, com espuma FuelCell com infusão de PEBAX, para treinos de velocidade e provas. Geração atual, sucessora do Rebel v4."},
-{m:"Mizuno",md:"Wave Rider 28",ano:2024,p:899,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:12,s:["asfalto"],obs:"Clássico equilíbrio entre amortecimento e estabilidade."},
-{m:"Mizuno",md:"Wave Sky 8",ano:2024,p:999,n:["int","avc"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Amortecimento alto da Mizuno para quem quer conforto em qualquer ritmo."},
+{m:"Mizuno",md:"Wave Rider 30",ano:2026,p:999,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Geração atual do clássico da Mizuno, com Enerzy NXT em duas camadas e placa Wave de nylon, para rodagens diárias em ritmo confortável. O drop caiu para 8 mm nesta versão."},
+{m:"Mizuno",md:"Wave Sky 9",ano:2025,p:1199,n:["int","avc"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Amortecimento alto da Mizuno, com Enerzy NXT, para longas distâncias e treinos regenerativos. Sucessor do Wave Sky 8. Peça um número acima do habitual."},
 {m:"Mizuno",md:"Wave Inspire 20",ano:2024,p:999,n:["int"],u:["corrida"],pi:["neutra","pronada"],am:"equilibrado",d:12,s:["asfalto"],obs:"Suporte técnico da Mizuno para pisada pronada."},
 {m:"On",md:"Cloud 5",ano:2021,p:949,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:6,s:["asfalto","esteira"],obs:"Visual leve para o dia a dia, versátil entre caminhada e corrida."},
-{m:"On",md:"Cloudmonster 2",ano:2024,p:1149,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Amortecimento máximo da On, generoso para treinos longos."},
+{m:"On",md:"Cloudmonster 3",ano:2025,p:1499,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Amortecimento máximo da On, sucessor do Cloudmonster 2, para rodagens diárias e treinos longos."},
 {m:"On",md:"Cloudsurfer 2",ano:2025,p:1199,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"O mais responsivo da linha On Cloud, bom para ritmos fortes."},
 {m:"Puma",md:"Velocity Nitro 3",ano:2024,p:699,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Espuma Nitro responsiva a um preço acessível."},
 {m:"Puma",md:"Deviate Nitro 3",ano:2024,p:1199,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Placa de carbono da Puma para treinos de ritmo e dia de prova."},
@@ -548,7 +548,7 @@ var SHOES = [
 {m:"Fila",md:"KR7 Pro",ano:2025,p:699,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Opção intermediária da linha KR, com tecnologia Speed Tech."},
 {m:"Under Armour",md:"Charged Quicker 2",ano:null,p:449,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Intermediário versátil da Under Armour para treinos do dia a dia."},
 {m:"Under Armour",md:"HOVR Sonic 5",ano:2022,p:999,n:["int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Espuma HOVR com boa absorção de impacto."},
-{m:"Olympikus",md:"Corre 4",ano:2024,p:599,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:10,s:["asfalto","esteira"],obs:"Marca brasileira, excelente porta de entrada e preço."},
+{m:"Olympikus",md:"Corre 5",ano:null,p:599,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Geração atual do Corre, sucessora do Corre 4, com entressola PY-VA (EVA com Pebax) e palmilha NT-X, versátil de rodagens leves a treinos mais intensos."},
 {m:"Olympikus",md:"Corre Vento 3",ano:null,p:499,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Leve (215 g), com entressola Eleva Pro 2.0 e solado Ultrax, para rodagens e treinos diários. Geração atual, sucessora do Corre Vento 2."},
 {m:"Olympikus",md:"Corre Supra 2",ano:null,p:899,n:["int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Mais responsivo da linha Olympikus, ótimo custo-benefício."},
 {m:"Olympikus",md:"Corre Pace",ano:2026,p:1999,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"Supertênis nacional com placa de carbono, projeto de performance da Olympikus."},
@@ -565,7 +565,7 @@ var SHOES = [
 {m:"361°",md:"Spire Float III",ano:null,p:699,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:null,s:["asfalto"],obs:"Topo de linha da 361° no Brasil: placa de náilon para propulsão combinada com entressola de amortecimento com CO2 industrial reciclado. Drop não divulgado pelo fabricante."},
 {m:"Xtep",md:"2000KM 5.0 Pro",ano:2026,p:695,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:5,s:["asfalto","pista"],obs:"Treino de ritmo forte e longão com resposta rápida — testes independentes relatam amortecimento mais firme, adequado para quem já corre com regularidade."},
 {m:"Asics",md:"Dynablast 6",ano:2026,p:699,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto","esteira"],obs:"Pau pra toda obra da Asics com espuma FF Blast+: rodagens, treinos diários e provas. Geração atual, sucessora do Dynablast 5."},
-{m:"Asics",md:"Gel-Cumulus 26",ano:2024,p:900,n:["ini","int","avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:8,s:["asfalto"],obs:"Tênis neutro e estável, indicado pelo fabricante para corredores de todos os níveis — bom custo-benefício frente ao Gel-Nimbus. Preço e ficha técnica verificados na loja oficial Asics Brasil (Velocità)."},
+{m:"Asics",md:"Gel-Cumulus 28",ano:2026,p:899,n:["ini","int","avc"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["asfalto"],obs:"Geração atual do tênis neutro de treino diário da Asics, com FF Blast Max, mais macio que as versões anteriores. Bom custo-benefício frente ao Gel-Nimbus."},
 {m:"Nike",md:"Downshifter 13",ano:2024,p:450,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:null,s:["asfalto","esteira"],obs:"Entrada mais vendida da Nike no Brasil, serve tanto para corrida quanto treino de academia. Drop não divulgado pela Nike nas fontes consultadas — trate a ficha técnica como aproximada."},
 {m:"Adidas",md:"Duramo SL 2",ano:null,p:500,n:["ini"],u:["corrida","caminhada"],pi:["neutra"],am:"equilibrado",d:null,s:["asfalto","esteira"],obs:"Um dos modelos mais vendidos da Adidas no Brasil — sucessor do Duramo SL (já descontinuado), com entressola Lightmotion/LightStrike. Drop não divulgado pela Adidas nas fontes consultadas — trate a ficha técnica como aproximada."},
 {m:"Asics",md:"GT-2000 15",ano:2026,p:999,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"macio",d:8,s:["asfalto"],obs:"Estabilidade leve (3D Guidance System) para pronação leve a moderada, com espuma macia FF Blast Max. Geração atual, vendida pela própria Centauro."},
@@ -579,7 +579,7 @@ var SHOES = [
 {m:"Li-Ning",md:"Red Hare 9 Ultra",ano:2025,p:1029,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["asfalto","pista"],obs:"Super treino chinês com espuma Super Boom (PEBA), para treinos diários, de velocidade e provas. Vendido pela Corra Barato."},
 {m:"Asics",md:"Superblast 3",ano:2026,p:1699,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["asfalto","pista"],obs:"Super treino da Asics com FF Leap e FF Blast+, sem placa, para treinos diários, longões e ritmo sustentado. Geração atual, sucessora do Superblast 2."},
 {m:"Adidas",md:"Adizero EVO SL",ano:2025,p:1099,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"macio",d:7,s:["asfalto","pista"],obs:"Leve, com espuma Lightstrike Pro e sem placa, para treinos diários, de velocidade e provas. Drop de 7 mm no masculino e 6 mm no feminino."},
-{m:"Fila",md:"Racer Speedzone SE",ano:null,p:699,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Pau pra toda obra da Fila com espuma Speed Tech e cabedal S-Knit, para treinos diários, de velocidade e provas."},
+{m:"Fila",md:"Speedzone 2",ano:null,p:599,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Sucessor do Racer Speedzone, com espuma Skyfoam, para rodagem diária e provas de 5 km à maratona."},
 {m:"Mizuno",md:"Neo Aura Knit",ano:null,p:799,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra"],am:"macio",d:9,s:["asfalto","esteira"],obs:"Cabedal em malha e entressola Enerzy NXT, para treinos diários e uso no dia a dia."},
 {m:"Under Armour",md:"Charged Nonstop",ano:null,p:599,n:["ini","int"],u:["corrida"],pi:["neutra"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Pau pra toda obra da Under Armour com entressola Charged+, para rodagens, treinos diários e provas."},
 {m:"Mizuno",md:"Hyperwarp Pure",ano:2025,p:2499,n:["avc"],u:["corrida"],pi:["neutra","supinada"],am:"firme",d:6,s:["asfalto","pista"],obs:"Tênis de competição da Mizuno com placa de carbono e espuma Enerzy XP (PEBA), para dia de prova. Peça um número acima do habitual."},
@@ -617,7 +617,27 @@ var SHOES = [
 {m:"New Balance",md:"FuelCell SuperComp Rebel v1",ano:2026,p:1499,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"macio",d:4,s:["asfalto","pista"],obs:"Super treino com placa Energy Arc e espuma Infinion, para treinos diários, intervalados e provas."},
 {m:"On",md:"Cloudsurfer Max",ano:2025,p:1399,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:12,s:["asfalto","esteira"],obs:"Versão de amortecimento máximo da linha Cloudsurfer, com CloudTec Phase em Helion, para rodagens e treinos diários. Drop alto (12 mm) e peso de 292 g."},
 {m:"Olympikus",md:"Corre Max",ano:null,p:549,n:["ini","int"],u:["corrida","caminhada"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Amortecimento máximo com entressola Eleva Pro Max, para rodagens, treinos diários e uso casual. Mais pesado (335 g)."},
-{m:"361°",md:"Kairos 3",ano:null,p:699,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Tênis de estabilidade com espuma Engage, para rodagens e treinos diários de quem precisa de mais suporte. Leve para a categoria (248 g)."}
+{m:"361°",md:"Kairos 3",ano:null,p:699,n:["ini","int"],u:["corrida"],pi:["neutra","pronada"],am:"macio",d:8,s:["asfalto","esteira"],obs:"Tênis de estabilidade com espuma Engage, para rodagens e treinos diários de quem precisa de mais suporte. Leve para a categoria (248 g)."},
+{m:"Olympikus",md:"Corre Turbo",ano:null,p:699,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto","pista"],obs:"Super treino sem placa, com espuma NT-X 2.0 (TPEE supercrítico), leve (226 g), para rodagens e treinos intensos como intervalados e fartleks."},
+{m:"Fila",md:"Racer Carbon 3",ano:null,p:1499,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"firme",d:8,s:["asfalto","pista"],obs:"Tênis de competição da Fila, com placa de carbono e espuma Speed Tech (PEBA), para velocidade e provas.",al:["Carbon 3"]},
+{m:"Fila",md:"Float Maxxi 2 Pro",ano:null,p:999,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Amortecimento alto com placa de carbono Speed Tech Carbon no meio da entressola, para rodagens. Mais pesado (277 a 296 g)."},
+{m:"Fila",md:"Aero Skyfoam",ano:null,p:599,n:["ini","int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto","esteira"],obs:"Rodagem com espuma Skyfoam macia e de bom retorno de energia."},
+{m:"Asics",md:"Metaspeed Sky Tokyo",ano:2025,p:2299,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:5,s:["asfalto","pista"],obs:"Tênis de prova da Asics, com placa de carbono, FF Turbo+ e FF Leap, para corredores de passada longa. Muito leve (160 g)."},
+{m:"Mizuno",md:"Wave Rebellion Pro 3",ano:2025,p:1999,n:["avc"],u:["corrida"],pi:["neutra","supinada"],am:"firme",d:null,s:["asfalto","pista"],obs:"Tênis de prova da Mizuno, com placa Wave de carbono e Enerzy XP, de 5 km à maratona. As fontes divergem sobre o drop."},
+{m:"Mizuno",md:"Wave Rebellion Flash 3",ano:2025,p:1199,n:["int","avc"],u:["corrida"],pi:["neutra"],am:"equilibrado",d:3,s:["asfalto","pista"],obs:"Treino rápido com placa de nylon e fibra de vidro, Enerzy XP e Enerzy NXT, para ritmos acelerados e séries longas. Calça meio número menor."},
+{m:"Mizuno",md:"Hyperwarp Elite",ano:2025,p:2299,n:["avc"],u:["corrida"],pi:["neutra","supinada"],am:"firme",d:6,s:["asfalto","pista"],obs:"Tênis de prova com placa de carbono e Enerzy XP em duas camadas, de 5 km à maratona, com transição menos agressiva que o Hyperwarp Pure. Muito leve (164 g)."},
+{m:"Adidas",md:"Adizero Adios Pro 5",ano:2026,p:2199,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:4,s:["asfalto","pista"],obs:"Tênis de prova com EnergyRim de carbono e Lightstrike Pro, de 10 km à maratona. Sucessor do Adios Pro 4. Peça um número acima do habitual."},
+{m:"Adidas",md:"Adizero Takumi Sen 11",ano:2026,p:1699,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:null,s:["asfalto","pista"],obs:"Tênis de competição para provas curtas e treinos de velocidade (5 km e 10 km)."},
+{m:"Adidas",md:"Hyperboost Edge",ano:2026,p:1799,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:8,s:["asfalto"],obs:"Super treino sem placa, com espuma Hyperboost Pro (PEBA), para volume de treino e rodagens longas."},
+{m:"Nike",md:"Vaporfly 4",ano:2025,p:2299,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:6,s:["asfalto","pista"],obs:"Tênis de prova da Nike com placa de carbono e ZoomX, para 5 km à maratona."},
+{m:"Nike",md:"Streakfly 2",ano:2025,p:1499,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:null,s:["asfalto","pista"],obs:"Tênis de competição leve, com ZoomX, para provas curtas e treinos de velocidade. Peça um número acima do habitual."},
+{m:"Nike",md:"Vomero Plus",ano:2025,p:1299,n:["ini","int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto"],obs:"Amortecimento máximo com ZoomX em toda a entressola, para rodagens diárias e longões."},
+{m:"On",md:"Cloudboom Volt",ano:2026,p:1599,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:5,s:["asfalto","pista"],obs:"Tênis de prova com Helion HF (PEBA) e Speedboard com fibra de carbono, de 10 km à maratona."},
+{m:"On",md:"Cloudflow 5",ano:2025,p:1399,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"equilibrado",d:6,s:["asfalto","pista"],obs:"Treino rápido com Helion HF e Speedboard de nylon com fibra de vidro, para ritmo, intervalados e provas."},
+{m:"On",md:"Cloudmonster 3 Hyper",ano:2025,p:1699,n:["int","avc"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Super treino sem placa, com Helion HF (PEBA) em toda a entressola, para rodagens e treinos longos."},
+{m:"Puma",md:"MagMax Nitro 2",ano:2026,p:1399,n:["ini","int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:10,s:["asfalto","esteira"],obs:"Amortecimento máximo da Puma, com Nitro supercrítico, para treinos diários e longões em ritmo leve a moderado e para corredores mais pesados."},
+{m:"Puma",md:"Fast-R Nitro Elite 3",ano:null,p:2199,n:["avc"],u:["corrida"],pi:["neutra"],am:"firme",d:null,s:["asfalto","pista"],obs:"Tênis de prova da Puma, com placa de carbono e Nitro Elite. Preço da loja oficial Puma Brasil."},
+{m:"Skechers",md:"Aero Burst",ano:2025,p:1199,n:["ini","int"],u:["corrida"],pi:["neutra","supinada"],am:"macio",d:6,s:["asfalto"],obs:"Treino diário de alta quilometragem, com Hyper Burst Ice e placa em H com carbono para estabilidade. Mais pesado (309 g)."}
 ];
 
 /* ---------------- Perguntas ---------------- */
@@ -1345,7 +1365,7 @@ function checkModel(ev){
   var h = "";
 
   if(r.tipo === "vazio"){
-    h = '<p class="sub">Digite a marca e o modelo, por exemplo "Mizuno Wave Rider 28".</p>';
+    h = '<p class="sub">Digite a marca e o modelo, por exemplo "Mizuno Wave Rider 30".</p>';
   } else if(r.tipo === "exato"){
     h = htmlAnalise(r.shoe);
   } else if(r.tipo === "geracao"){
